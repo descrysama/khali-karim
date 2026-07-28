@@ -10,43 +10,43 @@ export type PropertyType =
 
 export type DpeClass = "A" | "B" | "C" | "D" | "E" | "F" | "G";
 
-export type Governorate =
-  | "Tunis"
-  | "Ariana"
-  | "Ben Arous"
-  | "Nabeul"
-  | "Sousse"
-  | "Monastir"
-  | "Sfax"
-  | "Médenine";
+export interface ListingPhoto {
+  id: string;
+  url: string;
+  alt: string | null;
+}
 
 export interface Listing {
   id: string;
+  reference: string;
   type: PropertyType;
   kindLabel: string;
   transaction: Transaction;
   city: string;
   gov: string;
-  zone: string;
+  govSlug: string | null;
+  zone: string | null;
   surface: number;
-  rooms: number;
-  bedrooms: number;
+  rooms: number | null;
+  bedrooms: number | null;
   price: number;
-  dpe: DpeClass;
-  ges: DpeClass;
+  charges: number | null;
+  dpe: DpeClass | null;
+  ges: DpeClass | null;
   exterior: boolean;
-  elevator: boolean;
+  elevator: boolean | null;
   floor: number | null;
-  floorTotal: number;
-  photos: number;
+  floorTotal: number | null;
   isNew: boolean;
-  year: number;
-  charges: number;
-  subject: string;
-  photoSeed: number;
-  hasEnergy: boolean;
+  year: number | null;
+  photos: ListingPhoto[];
+  publicLat: number | null;
+  publicLng: number | null;
+  publicRadiusM: number | null;
+  // Dérivés côté mapping
   isLand: boolean;
   isParking: boolean;
+  hasEnergy: boolean;
 }
 
 export type SortKey = "recent" | "price-asc" | "price-desc" | "surface-desc";

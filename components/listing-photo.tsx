@@ -42,6 +42,7 @@ export function ListingPhoto({
           fill
           sizes={sizes}
           priority={priority}
+          unoptimized
           className="object-cover"
         />
       ) : (

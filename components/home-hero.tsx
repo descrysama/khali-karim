@@ -8,8 +8,10 @@ import { TransactionTabs } from "@/components/transaction-tabs";
 import { FilterDropdown } from "@/components/filter-dropdown";
 import { useFilterOptions } from "@/hooks/use-filter-options";
 import { DEFAULT_FILTERS, filtersToSearchParams } from "@/lib/filter";
-import { photoUrl } from "@/lib/listings";
 import type { Transaction } from "@/lib/types";
+
+const HERO_BG =
+  "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=70";
 
 export function HomeHero() {
   const t = useTranslations("hero");
@@ -18,7 +20,7 @@ export function HomeHero() {
   const [transaction, setTransaction] = useState<Transaction>("vente");
   const [region, setRegion] = useState("");
   const [type, setType] = useState("");
-  const bg = photoUrl("Maison", 0, 2000) as string;
+  const bg = HERO_BG;
 
   function search() {
     const qs = filtersToSearchParams({

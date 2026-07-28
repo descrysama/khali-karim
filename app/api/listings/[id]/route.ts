@@ -1,22 +1,23 @@
 import { NextResponse } from "next/server";
-import { getListing, LISTINGS } from "@/lib/listings";
+import { getListing, getSimilar } from "@/lib/api";
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const listing = getListing(id);
-  if (!listing) {
-    return NextResponse.json({ error: "not_found" }, { status: 404 });
+
+  try {
+    const listing = await getListing(id);
+    if (!listing) {
+      return NextResponse.json({ error: "not_found" }, { status: 404 });
+    }
+    const similar = await getSimilar(id);
+    return NextResponse.json({ listing, similar });
+  } catch {
+    return NextResponse.json(
+      { error: "backend_unavailable" },
+      { status: 502 }
+    );
   }
-
-  const similar = LISTINGS.filter(
-    (it) =>
-      it.id !== listing.id &&
-      it.type === listing.type &&
-      it.transaction === listing.transaction
-  ).slice(0, 3);
-
-  return NextResponse.json({ listing, similar });
 }

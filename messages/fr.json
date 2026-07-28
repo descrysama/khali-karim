@@ -23,8 +23,10 @@
     "search": "Rechercher"
   },
   "home": {
-    "aroundYou": "Autour de vous",
-    "nearbyTitle": "Nos biens à {city}",
+    "aroundYou": "Nos annonces",
+    "latestTitle": "Dernières annonces",
+    "emptyTitle": "Bientôt de nouvelles annonces",
+    "emptyHint": "Nos biens arrivent très prochainement. Appelez-nous pour une recherche sur mesure.",
     "seeAll": "Voir toutes les annonces",
     "statPortfolioLabel": "biens en portefeuille",
     "statGovernoratesLabel": "gouvernorats couverts",
@@ -146,7 +148,7 @@
   },
   "detail": {
     "back": "Retour aux résultats",
-    "photoCount": "Voir les {count} photos",
+    "photoCount": "{count, plural, one {Voir la photo} other {Voir les # photos}}",
     "sectionBien": "Le bien",
     "sectionEnergy": "Performance énergétique",
     "sectionQuartier": "Le quartier",

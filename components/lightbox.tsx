@@ -4,16 +4,14 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { subjectLabel } from "@/lib/content";
-import type { Locale } from "@/i18n/routing";
-import type { GalleryPhoto } from "@/lib/listings";
+import type { ListingPhoto } from "@/lib/types";
 
 interface LightboxProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  photos: GalleryPhoto[];
+  photos: ListingPhoto[];
   index: number;
   onIndexChange: (index: number) => void;
 }
@@ -26,7 +24,6 @@ export function Lightbox({
   onIndexChange,
 }: LightboxProps) {
   const t = useTranslations("lightbox");
-  const locale = useLocale() as Locale;
   const len = photos.length;
   const step = (delta: number) => onIndexChange((index + delta + len) % len);
 
@@ -47,6 +44,7 @@ export function Lightbox({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, index, len]);
 
+  if (len === 0) return null;
   const current = photos[index];
 
   return (
@@ -55,12 +53,13 @@ export function Lightbox({
         <DialogPrimitive.Backdrop className="fixed inset-0 z-[80] bg-black/[0.82] data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
         <DialogPrimitive.Popup className="fixed inset-0 z-[80] flex flex-col px-[4vw] pb-6 pt-5 outline-none">
           <DialogPrimitive.Title className="sr-only">
-            Galerie photos
+            {t("close")}
           </DialogPrimitive.Title>
 
           <div className="flex flex-none items-center justify-between gap-4 px-1.5 pb-3.5">
             <span className="font-mono text-xs tracking-[0.06em] text-white/70">
-              {index + 1} / {len} · {subjectLabel(current.subject, locale)}
+              {index + 1} / {len}
+              {current.alt ? ` · ${current.alt}` : ""}
             </span>
             <DialogPrimitive.Close className="flex size-[38px] items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/15">
               <X className="size-4" />
@@ -79,19 +78,14 @@ export function Lightbox({
             </button>
 
             <div className="relative mx-auto flex min-h-0 w-full max-w-[1100px] flex-1 items-center justify-center">
-              {current.url ? (
-                <Image
-                  src={current.url}
-                  alt={current.subject}
-                  fill
-                  sizes="90vw"
-                  className="rounded-xl object-contain"
-                />
-              ) : (
-                <span className="font-mono text-xs text-white/60">
-                  {t("terrain")}
-                </span>
-              )}
+              <Image
+                src={current.url}
+                alt={current.alt ?? ""}
+                fill
+                sizes="90vw"
+                unoptimized
+                className="rounded-xl object-contain"
+              />
             </div>
 
             <button
@@ -107,7 +101,7 @@ export function Lightbox({
           <div className="flex flex-none justify-center gap-2.5 overflow-x-auto pt-4">
             {photos.map((photo, n) => (
               <button
-                key={n}
+                key={photo.id}
                 type="button"
                 onClick={() => onIndexChange(n)}
                 className={cn(
@@ -117,15 +111,14 @@ export function Lightbox({
                     : "opacity-60 outline-transparent hover:opacity-90"
                 )}
               >
-                {photo.url && (
-                  <Image
-                    src={photo.url}
-                    alt=""
-                    fill
-                    sizes="96px"
-                    className="object-cover"
-                  />
-                )}
+                <Image
+                  src={photo.url}
+                  alt=""
+                  fill
+                  sizes="96px"
+                  unoptimized
+                  className="object-cover"
+                />
               </button>
             ))}
           </div>

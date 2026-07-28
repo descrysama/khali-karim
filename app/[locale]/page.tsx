@@ -2,16 +2,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { HomeHero } from "@/components/home-hero";
 import { ListingCard } from "@/components/listing-card";
-import { LISTINGS } from "@/lib/listings";
-import { cityLabel } from "@/lib/content";
-import type { Locale } from "@/i18n/routing";
-
-const USER_CITY = "La Marsa";
-
-function nearbyListings() {
-  const near = LISTINGS.filter((it) => it.city === USER_CITY).slice(0, 3);
-  return near.length >= 3 ? near : LISTINGS.slice(0, 3);
-}
+import { getListings } from "@/lib/api";
+import type { Listing } from "@/lib/types";
 
 export default async function HomePage({
   params,
@@ -21,7 +13,13 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("home");
-  const nearby = nearbyListings();
+
+  let latest: Listing[] = [];
+  try {
+    latest = (await getListings({ limit: 3 })).items;
+  } catch {
+    latest = [];
+  }
 
   const stats = [
     { value: "312", label: t("statPortfolioLabel") },
@@ -41,7 +39,7 @@ export default async function HomePage({
               {t("aroundYou")}
             </p>
             <h2 className="text-[30px] font-bold tracking-[-0.02em]">
-              {t("nearbyTitle", { city: cityLabel(USER_CITY, locale as Locale) })}
+              {t("latestTitle")}
             </h2>
           </div>
           <Link
@@ -55,11 +53,20 @@ export default async function HomePage({
           </Link>
         </div>
 
-        <div className="mt-7 grid grid-cols-[repeat(auto-fill,minmax(290px,1fr))] gap-[26px]">
-          {nearby.map((listing) => (
-            <ListingCard key={listing.id} listing={listing} />
-          ))}
-        </div>
+        {latest.length > 0 ? (
+          <div className="mt-7 grid grid-cols-[repeat(auto-fill,minmax(290px,1fr))] gap-[26px]">
+            {latest.map((listing) => (
+              <ListingCard key={listing.id} listing={listing} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-7 rounded-2xl border border-border bg-muted/40 px-7 py-14 text-center">
+            <p className="text-lg font-medium">{t("emptyTitle")}</p>
+            <p className="mx-auto mt-2 max-w-[46ch] text-sm text-muted-foreground">
+              {t("emptyHint")}
+            </p>
+          </div>
+        )}
       </section>
 
       <section className="mx-auto max-w-[1280px] px-7 pb-24 pt-20">

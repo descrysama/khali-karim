@@ -23,8 +23,10 @@
     "search": "بحث"
   },
   "home": {
-    "aroundYou": "من حولك",
-    "nearbyTitle": "عقاراتنا في {city}",
+    "aroundYou": "إعلاناتنا",
+    "latestTitle": "أحدث الإعلانات",
+    "emptyTitle": "إعلانات جديدة قريباً",
+    "emptyHint": "عقاراتنا في الطريق قريباً جداً. اتصل بنا لبحث على المقاس.",
     "seeAll": "عرض كل الإعلانات",
     "statPortfolioLabel": "عقار في المحفظة",
     "statGovernoratesLabel": "ولايات مغطّاة",
@@ -146,7 +148,7 @@
   },
   "detail": {
     "back": "العودة إلى النتائج",
-    "photoCount": "عرض {count} صورة",
+    "photoCount": "{count, plural, one {عرض الصورة} two {عرض صورتين} few {عرض # صور} other {عرض # صورة}}",
     "sectionBien": "العقار",
     "sectionEnergy": "الأداء الطاقي",
     "sectionQuartier": "الحي",

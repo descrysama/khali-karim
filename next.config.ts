@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
+      // Photos servies par le backend Darnour (/uploads/*)
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3001",
+      },
       {
         protocol: "https",
         hostname: "images.unsplash.com",

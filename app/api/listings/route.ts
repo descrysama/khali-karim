@@ -1,24 +1,29 @@
 import { NextResponse } from "next/server";
-import { applyFilters, parseFilters } from "@/lib/filter";
-import type { ListingsPage } from "@/lib/types";
+import { getListings } from "@/lib/api";
 
-export const PAGE_SIZE = 9;
-
-export function GET(request: Request) {
+export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const filters = parseFilters(searchParams);
-  const page = Math.max(0, Number(searchParams.get("page") ?? 0) || 0);
 
-  const all = applyFilters(filters);
-  const start = page * PAGE_SIZE;
-  const items = all.slice(start, start + PAGE_SIZE);
-  const nextPage = start + PAGE_SIZE < all.length ? page + 1 : null;
-
-  const body: ListingsPage = {
-    items,
-    total: all.length,
-    page,
-    nextPage,
-  };
-  return NextResponse.json(body);
+  try {
+    const page = await getListings({
+      q: searchParams.get("q") ?? undefined,
+      region: searchParams.get("region") ?? undefined,
+      transaction: searchParams.get("transaction") ?? undefined,
+      type: searchParams.get("type") ?? undefined,
+      budget: searchParams.get("budget") ?? undefined,
+      rooms: searchParams.get("rooms") ?? undefined,
+      surfaceMin: searchParams.get("surfaceMin") ?? undefined,
+      dpeMax: searchParams.get("dpeMax") ?? undefined,
+      exterior: searchParams.get("exterior") === "1",
+      elevator: searchParams.get("elevator") === "1",
+      sort: searchParams.get("sort") ?? undefined,
+      page: Number(searchParams.get("page") ?? 0) || 0,
+    });
+    return NextResponse.json(page);
+  } catch {
+    return NextResponse.json(
+      { error: "backend_unavailable" },
+      { status: 502 }
+    );
+  }
 }

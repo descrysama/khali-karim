@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useListing } from "@/lib/queries";
-import { galleryFor } from "@/lib/listings";
 import {
   cityLabel,
   description,
@@ -16,7 +15,6 @@ import {
   placeLabel,
   priceLabel,
   refLabel,
-  subjectLabel,
   unitLabel,
   zoneLabel,
 } from "@/lib/content";
@@ -72,11 +70,17 @@ export function ListingDetail({ id }: { id: string }) {
   }
 
   const { listing: d, similar } = data;
-  const gallery = galleryFor(d);
+  const photos = d.photos;
+  const hasPhotos = photos.length > 0;
+  const thumbs = photos.slice(1, 4);
+  const placeholder = d.isLand
+    ? tListing("terrainPlaceholder")
+    : tListing("photoPlaceholder");
   const openLightbox = (index: number) => {
     setPhotoIndex(index);
     setLightboxOpen(true);
   };
+  const zoneOrCity = zoneLabel(d.zone, locale) || cityLabel(d.city, locale);
 
   return (
     <section className="mx-auto max-w-[1280px] px-7 pb-20 pt-[22px]">
@@ -93,46 +97,50 @@ export function ListingDetail({ id }: { id: string }) {
       {/* Galerie */}
       <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-[2.1fr_1fr]">
         <div
-          role="button"
-          tabIndex={0}
-          onClick={() => openLightbox(0)}
-          onKeyDown={(e) => e.key === "Enter" && openLightbox(0)}
-          className="cursor-zoom-in"
+          role={hasPhotos ? "button" : undefined}
+          tabIndex={hasPhotos ? 0 : undefined}
+          onClick={() => hasPhotos && openLightbox(0)}
+          onKeyDown={(e) => hasPhotos && e.key === "Enter" && openLightbox(0)}
+          className={hasPhotos ? "cursor-zoom-in" : undefined}
         >
           <ListingPhoto
-            url={gallery[0].url}
+            url={photos[0]?.url ?? null}
             alt={detailTitle(d, locale)}
             sizes="(max-width: 640px) 100vw, 66vw"
             priority
-            placeholder={tListing("terrainPlaceholder")}
+            placeholder={placeholder}
             className="h-[300px] sm:h-[460px]"
           >
-            <span className="absolute bottom-3.5 end-3.5 rounded-full bg-background/95 px-4 py-2 text-[13.5px] font-medium text-foreground shadow-sm">
-              {t("photoCount", { count: d.photos })}
-            </span>
+            {hasPhotos && (
+              <span className="absolute bottom-3.5 end-3.5 rounded-full bg-background/95 px-4 py-2 text-[13.5px] font-medium text-foreground shadow-sm">
+                {t("photoCount", { count: photos.length })}
+              </span>
+            )}
           </ListingPhoto>
         </div>
 
-        <div className="hidden grid-rows-3 gap-2.5 sm:grid">
-          {[1, 2, 3].map((n) => (
-            <div
-              key={n}
-              role="button"
-              tabIndex={0}
-              onClick={() => openLightbox(n)}
-              onKeyDown={(e) => e.key === "Enter" && openLightbox(n)}
-              className="cursor-zoom-in"
-            >
-              <ListingPhoto
-                url={gallery[n].url}
-                alt={subjectLabel(gallery[n].subject, locale)}
-                sizes="33vw"
-                placeholder={tListing("photoPlaceholder")}
-                className="h-full min-h-[100px]"
-              />
-            </div>
-          ))}
-        </div>
+        {thumbs.length > 0 && (
+          <div className="hidden grid-rows-3 gap-2.5 sm:grid">
+            {thumbs.map((photo, i) => (
+              <div
+                key={photo.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => openLightbox(i + 1)}
+                onKeyDown={(e) => e.key === "Enter" && openLightbox(i + 1)}
+                className="cursor-zoom-in"
+              >
+                <ListingPhoto
+                  url={photo.url}
+                  alt={photo.alt ?? ""}
+                  sizes="33vw"
+                  placeholder={placeholder}
+                  className="h-full min-h-[100px]"
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Contenu + aside */}
@@ -177,7 +185,7 @@ export function ListingDetail({ id }: { id: string }) {
             {description(d, locale)}
           </p>
 
-          {d.hasEnergy && (
+          {d.hasEnergy && d.dpe && (
             <>
               <h2 className="mb-3.5 mt-9 text-xl font-bold tracking-[-0.01em]">
                 {t("sectionEnergy")}
@@ -200,7 +208,7 @@ export function ListingDetail({ id }: { id: string }) {
           >
             <span className="font-mono text-[11px] text-muted-foreground">
               {t("mapPlaceholder", {
-                zone: zoneLabel(d.zone, locale),
+                zone: zoneOrCity,
                 city: cityLabel(d.city, locale),
               })}
             </span>
@@ -262,13 +270,15 @@ export function ListingDetail({ id }: { id: string }) {
         </div>
       )}
 
-      <Lightbox
-        open={lightboxOpen}
-        onOpenChange={setLightboxOpen}
-        photos={gallery}
-        index={photoIndex}
-        onIndexChange={setPhotoIndex}
-      />
+      {hasPhotos && (
+        <Lightbox
+          open={lightboxOpen}
+          onOpenChange={setLightboxOpen}
+          photos={photos}
+          index={photoIndex}
+          onIndexChange={setPhotoIndex}
+        />
+      )}
     </section>
   );
 }

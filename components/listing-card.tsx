@@ -2,14 +2,8 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { DPE_BG, photoUrl } from "@/lib/listings";
-import {
-  cardTitle,
-  cityLabel,
-  priceLabel,
-  specs,
-  zoneLabel,
-} from "@/lib/content";
+import { DPE_BG } from "@/lib/listings";
+import { cardTitle, cityLabel, priceLabel, specs, zoneLabel } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
 import type { Listing } from "@/lib/types";
@@ -32,7 +26,9 @@ export function ListingCard({
 }: ListingCardProps) {
   const locale = useLocale() as Locale;
   const t = useTranslations("listing");
-  const url = photoUrl(listing.type, listing.photoSeed, 800);
+  const url = listing.photos[0]?.url ?? null;
+  const photoCount = listing.photos.length;
+  const zone = zoneLabel(listing.zone, locale);
   const badge = listing.isNew
     ? t("badgeNew")
     : listing.transaction === "location"
@@ -53,7 +49,9 @@ export function ListingCard({
         alt={cardTitle(listing, locale) + " · " + cityLabel(listing.city, locale)}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
         priority={priority}
-        placeholder={t("terrainPlaceholder")}
+        placeholder={
+          listing.isLand ? t("terrainPlaceholder") : t("photoPlaceholder")
+        }
         className="aspect-[4/3] transition-[border-radius] group-hover:rounded-3xl"
       >
         <span className="absolute start-3 top-3 flex gap-1.5">
@@ -67,7 +65,7 @@ export function ListingCard({
           >
             {badge}
           </span>
-          {showDpe && listing.hasEnergy && (
+          {showDpe && listing.hasEnergy && listing.dpe && (
             <span
               dir="ltr"
               className={cn(
@@ -79,12 +77,12 @@ export function ListingCard({
             </span>
           )}
         </span>
-        {showCount && (
+        {showCount && photoCount > 0 && (
           <span
             dir="ltr"
             className="absolute bottom-3 end-3 rounded-full bg-dark/70 px-2.5 py-[3px] font-mono text-[10.5px] text-white"
           >
-            1 / {listing.photos}
+            1 / {photoCount}
           </span>
         )}
       </ListingPhoto>
@@ -98,7 +96,8 @@ export function ListingCard({
           {specs(listing, locale)}
         </p>
         <p className="text-[13px] text-subtle">
-          {zoneLabel(listing.zone, locale)}, {cityLabel(listing.city, locale)}
+          {zone ? `${zone}, ` : ""}
+          {cityLabel(listing.city, locale)}
         </p>
       </div>
     </Link>

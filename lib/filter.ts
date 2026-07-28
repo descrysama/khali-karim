@@ -1,5 +1,4 @@
-import { DPE_ORDER, LISTINGS } from "./listings";
-import type { DpeClass, Listing, ListingFilters, SortKey } from "./types";
+import type { ListingFilters, SortKey } from "./types";
 
 export const DEFAULT_FILTERS: ListingFilters = {
   q: "",
@@ -16,39 +15,6 @@ export const DEFAULT_FILTERS: ListingFilters = {
 };
 
 const SORTS: SortKey[] = ["recent", "price-asc", "price-desc", "surface-desc"];
-
-export function applyFilters(
-  filters: ListingFilters,
-  listings: Listing[] = LISTINGS
-): Listing[] {
-  const q = filters.q.trim().toLowerCase();
-  let list = listings.filter((it) => {
-    if (it.transaction !== filters.transaction) return false;
-    if (filters.region && it.gov !== filters.region) return false;
-    if (q && !(it.city + " " + it.zone + " " + it.gov).toLowerCase().includes(q))
-      return false;
-    if (filters.type && it.type !== filters.type) return false;
-    if (+filters.budget && it.price > +filters.budget) return false;
-    if (+filters.rooms && it.rooms < +filters.rooms) return false;
-    if (+filters.surfaceMin && it.surface < +filters.surfaceMin) return false;
-    if (
-      filters.dpeMax &&
-      DPE_ORDER.indexOf(it.dpe) > DPE_ORDER.indexOf(filters.dpeMax as DpeClass)
-    )
-      return false;
-    if (filters.exterior && !it.exterior) return false;
-    if (filters.elevator && !it.elevator) return false;
-    return true;
-  });
-
-  if (filters.sort === "price-asc")
-    list = list.slice().sort((a, b) => a.price - b.price);
-  if (filters.sort === "price-desc")
-    list = list.slice().sort((a, b) => b.price - a.price);
-  if (filters.sort === "surface-desc")
-    list = list.slice().sort((a, b) => b.surface - a.surface);
-  return list;
-}
 
 /** Nombre de filtres actifs affichés dans le badge « Tous les filtres ». */
 export function activeFilterCount(f: ListingFilters): number {
