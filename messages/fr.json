@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "title": "DarNour Immobilier — Vente & location en Tunisie",
+    "description": "Agence immobilière indépendante à La Marsa. Appartements, villas, terrains et locaux à la vente et à la location du Grand Tunis au Sahel."
+  },
+  "nav": {
+    "buy": "Acheter",
+    "rent": "Louer",
+    "agency": "L'agence"
+  },
+  "footer": {
+    "tagline": "DarNour Immobilier — La Marsa, Tunisie",
+    "legal": "Honoraires et mentions légales disponibles en agence"
+  },
+  "hero": {
+    "titleLine1": "Votre prochaine adresse",
+    "titleLine2": "en Tunisie.",
+    "subtitle": "Tunis, La Marsa, Hammamet, Sousse, Djerba. Chaque bien visité par nos négociateurs avant publication.",
+    "tabVente": "Vente",
+    "tabLocation": "Location",
+    "fieldGouvernorat": "Gouvernorat",
+    "fieldType": "Type de bien",
+    "search": "Rechercher"
+  },
+  "home": {
+    "aroundYou": "Autour de vous",
+    "nearbyTitle": "Nos biens à {city}",
+    "seeAll": "Voir toutes les annonces",
+    "statPortfolioLabel": "biens en portefeuille",
+    "statGovernoratesLabel": "gouvernorats couverts",
+    "statSinceLabel": "agence indépendante depuis",
+    "statFirstVisitValue": "48 h",
+    "statFirstVisitLabel": "délai moyen de première visite"
+  },
+  "filters": {
+    "searchPlaceholder": "Ville, quartier, code postal",
+    "govAll": "Tous les gouvernorats",
+    "projet": "Projet",
+    "type": "Type de bien",
+    "budget": "Budget",
+    "rooms": "Pièces",
+    "surface": "Surface",
+    "energy": "Énergie",
+    "exterior": "Extérieur",
+    "elevator": "Ascenseur",
+    "allFilters": "Tous les filtres",
+    "reset": "Réinitialiser",
+    "sortPrefix": "Trier :",
+    "opt": {
+      "transaction": { "vente": "Acheter", "location": "Louer" },
+      "type": {
+        "all": "Tous types",
+        "Appartement": "Appartement",
+        "Maison": "Villa / Maison",
+        "Immeuble": "Immeuble",
+        "Terrain": "Terrain",
+        "Local commercial": "Local commercial",
+        "Parking": "Parking"
+      },
+      "budget": {
+        "any": "Indifférent",
+        "150000": "≤ 150 000 DT",
+        "300000": "≤ 300 000 DT",
+        "600000": "≤ 600 000 DT",
+        "1200000": "≤ 1 200 000 DT"
+      },
+      "rooms": {
+        "any": "Indifférent",
+        "2": "2 pièces et +",
+        "3": "3 pièces et +",
+        "4": "4 pièces et +",
+        "5": "5 pièces et +"
+      },
+      "surface": {
+        "any": "Indifférent",
+        "60": "≥ 60 m²",
+        "100": "≥ 100 m²",
+        "150": "≥ 150 m²",
+        "250": "≥ 250 m²"
+      },
+      "dpe": {
+        "any": "Indifférent",
+        "A": "A",
+        "B": "B ou mieux",
+        "C": "C ou mieux",
+        "D": "D ou mieux"
+      },
+      "sort": {
+        "recent": "Plus récentes",
+        "price-asc": "Prix croissant",
+        "price-desc": "Prix décroissant",
+        "surface-desc": "Surface décroissante"
+      }
+    },
+    "chip": {
+      "budget": {
+        "any": "Indifférent",
+        "150000": "150 000 DT",
+        "300000": "300 000 DT",
+        "600000": "600 000 DT",
+        "1200000": "1 200 000 DT"
+      },
+      "rooms": { "any": "Indifférent", "2": "2+", "3": "3+", "4": "4+", "5": "5+" },
+      "surface": {
+        "any": "Indifférent",
+        "60": "60 m²",
+        "100": "100 m²",
+        "150": "150 m²",
+        "250": "250 m²"
+      }
+    },
+    "modal": {
+      "title": "Tous les filtres",
+      "count": "{count} biens correspondent",
+      "typeSection": "Type de bien",
+      "groupProjet": "Projet",
+      "groupBudget": "Budget maximum",
+      "groupRooms": "Pièces",
+      "groupSurface": "Surface minimum",
+      "groupEnergy": "Classe énergie",
+      "criteria": "Critères",
+      "exteriorHint": "Balcon, terrasse ou jardin",
+      "elevatorHint": "Immeubles avec ascenseur uniquement",
+      "clearAll": "Tout effacer",
+      "apply": "Voir {count} biens"
+    }
+  },
+  "results": {
+    "titleVente": "Biens à vendre",
+    "titleLocation": "Biens à louer",
+    "count": "{count} annonces",
+    "noResultsTitle": "Aucun bien ne correspond",
+    "noResultsHint": "Élargissez le budget ou la localisation.",
+    "noResultsReset": "Réinitialiser les filtres",
+    "loadMore": "Charger plus",
+    "loadingNext": "chargement des annonces suivantes…",
+    "errorTitle": "Impossible de charger les annonces",
+    "errorHint": "Vérifiez votre connexion et réessayez."
+  },
+  "listing": {
+    "badgeNew": "Nouveau",
+    "badgeVente": "Vente",
+    "badgeLocation": "Location",
+    "terrainPlaceholder": "[ photo du terrain à fournir ]",
+    "photoPlaceholder": "[ photo à fournir ]"
+  },
+  "detail": {
+    "back": "Retour aux résultats",
+    "photoCount": "Voir les {count} photos",
+    "sectionBien": "Le bien",
+    "sectionEnergy": "Performance énergétique",
+    "sectionQuartier": "Le quartier",
+    "sectionSimilar": "Biens similaires",
+    "agentRole": "Négociatrice · secteur {gov}",
+    "callAgency": "Appeler l'agence",
+    "hoursLine": "{phone} · {hours}",
+    "requestVisit": "Demander une visite",
+    "mapPlaceholder": "[ carte du quartier — {zone}, {city} ]",
+    "notFoundTitle": "Bien introuvable",
+    "notFoundHint": "Cette annonce n'est plus disponible.",
+    "notFoundBack": "Retour aux annonces"
+  },
+  "lightbox": {
+    "close": "Fermer",
+    "prev": "Photo précédente",
+    "next": "Photo suivante",
+    "terrain": "[ photo du terrain à fournir ]"
+  },
+  "agence": {
+    "label": "L'agence",
+    "title": "Parlons de votre projet.",
+    "body": "DarNour accompagne acheteurs, vendeurs et locataires du Grand Tunis au Sahel depuis 1998. Quatre négociateurs, un seul interlocuteur par dossier.",
+    "callCta": "Appeler {phone}",
+    "rowAddress": "Adresse",
+    "rowHours": "Horaires",
+    "rowEmail": "E-mail",
+    "addressValue": "14 avenue Habib Bourguiba, 2078 La Marsa",
+    "hoursValue": "Lundi – samedi, 9h – 18h",
+    "photoPlaceholder": "[ photo devanture de l'agence, 1200×1400 ]"
+  },
+  "agent": {
+    "hoursShort": "lun – sam, 9h – 18h"
+  },
+  "lang": {
+    "short": "FR",
+    "french": "Français",
+    "arabic": "العربية"
+  }
+}

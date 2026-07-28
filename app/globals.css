@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans), var(--font-arabic);
+  --font-mono: var(--font-dm-mono), var(--font-arabic);
+  --font-heading: var(--font-dm-sans), var(--font-arabic);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Tokens métier DarNour (voir CLAUDE.md) */
+  --color-primary-hover: var(--primary-hover);
+  --color-dark: var(--dark);
+  --color-ink-soft: var(--ink-soft);
+  --color-subtle: var(--subtle);
+
+  /* Échelle DPE réglementaire — ne pas violetter */
+  --color-dpe-a: var(--dpe-a);
+  --color-dpe-b: var(--dpe-b);
+  --color-dpe-c: var(--dpe-c);
+  --color-dpe-d: var(--dpe-d);
+  --color-dpe-e: var(--dpe-e);
+  --color-dpe-f: var(--dpe-f);
+  --color-dpe-g: var(--dpe-g);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --background: #ffffff;
+  --foreground: #1b1424;
+
+  --card: #ffffff;
+  --card-foreground: #1b1424;
+  --popover: #ffffff;
+  --popover-foreground: #1b1424;
+
+  --primary: #27064a;
+  --primary-foreground: #ffffff;
+  --primary-hover: #3d0f6e;
+
+  --secondary: #f4f2f7;
+  --secondary-foreground: #1b1424;
+
+  --muted: #f4f2f7;
+  --muted-foreground: #6b6376;
+
+  --accent: #f4f2f7;
+  --accent-foreground: #27064a;
+
+  --destructive: #c94a3c;
+
+  --border: #eceaf0;
+  --input: #e0dce6;
+  --ring: #27064a;
+
+  /* surfaces & textes supplémentaires */
+  --dark: #150a24;
+  --ink-soft: #453d50;
+  --subtle: #928c9c;
+
+  /* DPE A → G */
+  --dpe-a: #2f8f63;
+  --dpe-b: #4a9b58;
+  --dpe-c: #8bbb4a;
+  --dpe-d: #e2c53c;
+  --dpe-e: #e59b31;
+  --dpe-f: #d97030;
+  --dpe-g: #c94a3c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
