@@ -8,7 +8,9 @@ import {
 } from "next-intl/server";
 import { DM_Sans, DM_Mono, Noto_Sans_Arabic } from "next/font/google";
 import "../globals.css";
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
+import { AgencyProvider } from "@/components/agency-provider";
+import { getAgency } from "@/lib/agency";
 import { QueryProvider } from "./query-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -30,6 +32,10 @@ const notoArabic = Noto_Sans_Arabic({
   subsets: ["arabic"],
   weight: ["400", "500", "700"],
 });
+
+// La fiche agence (téléphone, adresse…) est éditable depuis le back-office :
+// rendu à chaque requête pour refléter les changements immédiatement.
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -61,6 +67,7 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
   const messages = await getMessages();
+  const agency = await getAgency(locale as Locale);
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
@@ -71,11 +78,13 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <NextIntlClientProvider messages={messages}>
-          <QueryProvider>
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </QueryProvider>
+          <AgencyProvider agency={agency}>
+            <QueryProvider>
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </QueryProvider>
+          </AgencyProvider>
         </NextIntlClientProvider>
       </body>
     </html>

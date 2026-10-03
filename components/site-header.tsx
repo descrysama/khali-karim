@@ -2,11 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { AGENCY } from "@/lib/agency";
+import { phoneDisplay, phoneHref } from "@/lib/agency";
+import { useAgency } from "./agency-provider";
 import { LanguageSwitcher } from "./language-switcher";
 
 export function SiteHeader() {
   const t = useTranslations("nav");
+  const agency = useAgency();
   const nav = [
     { label: t("buy"), href: "/recherche" },
     { label: t("rent"), href: "/recherche?transaction=location" },
@@ -34,11 +36,11 @@ export function SiteHeader() {
           ))}
           <LanguageSwitcher />
           <a
-            href={AGENCY.phoneHref}
+            href={phoneHref(agency.phone)}
             dir="ltr"
             className="flex items-center gap-2 rounded-full bg-primary px-[18px] py-2.5 font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
           >
-            {AGENCY.phoneDisplay}
+            {phoneDisplay(agency.phone)}
           </a>
         </nav>
       </div>

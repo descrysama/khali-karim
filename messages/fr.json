@@ -9,7 +9,6 @@
     "agency": "L'agence"
   },
   "footer": {
-    "tagline": "Altayssir Immobilier — La Marsa, Tunisie",
     "legal": "Honoraires et mentions légales disponibles en agence"
   },
   "hero": {
@@ -159,18 +158,11 @@
   },
   "agence": {
     "label": "L'agence",
-    "title": "Parlons de votre projet.",
-    "body": "Altayssir accompagne acheteurs, vendeurs et locataires du Grand Tunis au Sahel depuis 1998.",
     "callCta": "Appeler {phone}",
     "rowAddress": "Adresse",
     "rowHours": "Horaires",
     "rowEmail": "E-mail",
-    "addressValue": "14 avenue Habib Bourguiba, 2078 La Marsa",
-    "hoursValue": "Lundi – samedi, 9h – 18h",
     "photoPlaceholder": "[ photo devanture de l'agence, 1200×1400 ]"
-  },
-  "agent": {
-    "hoursShort": "lun – sam, 9h – 18h"
   },
   "lang": {
     "short": "FR",

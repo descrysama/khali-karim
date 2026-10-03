@@ -19,7 +19,8 @@ import {
 import { ListingCard } from "@/components/listing-card";
 import { ListingPhoto, HATCH } from "@/components/listing-photo";
 import { Lightbox } from "@/components/lightbox";
-import { AGENCY } from "@/lib/agency";
+import { phoneDisplay, phoneHref } from "@/lib/agency";
+import { useAgency } from "@/components/agency-provider";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
 
@@ -42,7 +43,7 @@ function DetailSkeleton() {
 
 export function ListingDetail({ id }: { id: string }) {
   const t = useTranslations("detail");
-  const tAgent = useTranslations("agent");
+  const agency = useAgency();
   const tListing = useTranslations("listing");
   const locale = useLocale() as Locale;
   const { data, isLoading, isError } = useListing(id);
@@ -203,15 +204,15 @@ export function ListingDetail({ id }: { id: string }) {
         <aside className="flex flex-col gap-3.5 lg:sticky lg:top-[92px]">
           <div className="rounded-2xl border border-border p-6">
             <a
-              href={AGENCY.phoneHref}
+              href={phoneHref(agency.phone)}
               className="flex items-center justify-center rounded-xl bg-primary p-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
             >
               {t("callAgency")}
             </a>
             <p className="mt-3 text-center font-mono text-xs text-subtle">
               {t("hoursLine", {
-                phone: AGENCY.phoneDisplay,
-                hours: tAgent("hoursShort"),
+                phone: phoneDisplay(agency.phone),
+                hours: agency.hours,
               })}
             </p>
             <Link
