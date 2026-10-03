@@ -8,7 +8,6 @@ export type PropertyType =
   | "Local commercial"
   | "Parking";
 
-export type DpeClass = "A" | "B" | "C" | "D" | "E" | "F" | "G";
 
 export interface ListingPhoto {
   id: string;
@@ -31,8 +30,6 @@ export interface Listing {
   bedrooms: number | null;
   price: number;
   charges: number | null;
-  dpe: DpeClass | null;
-  ges: DpeClass | null;
   exterior: boolean;
   elevator: boolean | null;
   floor: number | null;
@@ -46,7 +43,6 @@ export interface Listing {
   // Dérivés côté mapping
   isLand: boolean;
   isParking: boolean;
-  hasEnergy: boolean;
 }
 
 export type SortKey = "recent" | "price-asc" | "price-desc" | "surface-desc";
@@ -59,7 +55,6 @@ export interface ListingFilters {
   budget: string;
   rooms: string;
   surfaceMin: string;
-  dpeMax: string;
   exterior: boolean;
   elevator: boolean;
   sort: SortKey;

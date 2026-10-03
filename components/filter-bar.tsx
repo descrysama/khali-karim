@@ -88,13 +88,6 @@ export function FilterBar({
           options={options.surface}
           defaultValue="0"
         />
-        <FilterDropdown
-          label={t("energy")}
-          value={filters.dpeMax}
-          onChange={(v) => patch({ dpeMax: v })}
-          options={options.dpe}
-          defaultValue=""
-        />
 
         <button
           type="button"

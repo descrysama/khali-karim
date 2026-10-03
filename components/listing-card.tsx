@@ -2,7 +2,6 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { DPE_BG } from "@/lib/listings";
 import { cardTitle, cityLabel, priceLabel, specs, zoneLabel } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
@@ -11,7 +10,6 @@ import { ListingPhoto } from "./listing-photo";
 
 interface ListingCardProps {
   listing: Listing;
-  showDpe?: boolean;
   showCount?: boolean;
   priority?: boolean;
   animate?: boolean;
@@ -19,7 +17,6 @@ interface ListingCardProps {
 
 export function ListingCard({
   listing,
-  showDpe = false,
   showCount = false,
   priority = false,
   animate = false,
@@ -65,17 +62,6 @@ export function ListingCard({
           >
             {badge}
           </span>
-          {showDpe && listing.hasEnergy && listing.dpe && (
-            <span
-              dir="ltr"
-              className={cn(
-                "flex h-5 w-[22px] items-center justify-center rounded-[5px] font-mono text-[10px] font-bold text-white",
-                DPE_BG[listing.dpe]
-              )}
-            >
-              {listing.dpe}
-            </span>
-          )}
         </span>
         {showCount && photoCount > 0 && (
           <span

@@ -42,7 +42,6 @@
     "budget": "Budget",
     "rooms": "Pièces",
     "surface": "Surface",
-    "energy": "Énergie",
     "exterior": "Extérieur",
     "elevator": "Ascenseur",
     "allFilters": "Tous les filtres",
@@ -80,13 +79,6 @@
         "150": "≥ 150 m²",
         "250": "≥ 250 m²"
       },
-      "dpe": {
-        "any": "Indifférent",
-        "A": "A",
-        "B": "B ou mieux",
-        "C": "C ou mieux",
-        "D": "D ou mieux"
-      },
       "sort": {
         "recent": "Plus récentes",
         "price-asc": "Prix croissant",
@@ -119,7 +111,6 @@
       "groupBudget": "Budget maximum",
       "groupRooms": "Pièces",
       "groupSurface": "Surface minimum",
-      "groupEnergy": "Classe énergie",
       "criteria": "Critères",
       "exteriorHint": "Balcon, terrasse ou jardin",
       "elevatorHint": "Immeubles avec ascenseur uniquement",
@@ -150,7 +141,6 @@
     "back": "Retour aux résultats",
     "photoCount": "{count, plural, one {Voir la photo} other {Voir les # photos}}",
     "sectionBien": "Le bien",
-    "sectionEnergy": "Performance énergétique",
     "sectionQuartier": "Le quartier",
     "sectionSimilar": "Biens similaires",
     "callAgency": "Appeler l'agence",

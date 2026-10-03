@@ -22,7 +22,6 @@ export interface ListingsQuery {
   budget?: string;
   rooms?: string;
   surfaceMin?: string;
-  dpeMax?: string;
   exterior?: boolean;
   elevator?: boolean;
   sort?: string;
@@ -46,7 +45,6 @@ function buildBackendParams(query: ListingsQuery): URLSearchParams {
   if (query.rooms && +query.rooms > 0) p.set("roomsMin", query.rooms);
   if (query.surfaceMin && +query.surfaceMin > 0)
     p.set("surfaceMin", query.surfaceMin);
-  if (query.dpeMax) p.set("dpeMax", query.dpeMax);
   if (query.exterior) p.set("exterior", "true");
   if (query.elevator) p.set("elevator", "true");
   if (query.sort) p.set("sort", SORT_TO_BACKEND[query.sort] ?? "recent");

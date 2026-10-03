@@ -34,15 +34,6 @@
   --color-ink-soft: var(--ink-soft);
   --color-subtle: var(--subtle);
 
-  /* Échelle DPE réglementaire — ne pas violetter */
-  --color-dpe-a: var(--dpe-a);
-  --color-dpe-b: var(--dpe-b);
-  --color-dpe-c: var(--dpe-c);
-  --color-dpe-d: var(--dpe-d);
-  --color-dpe-e: var(--dpe-e);
-  --color-dpe-f: var(--dpe-f);
-  --color-dpe-g: var(--dpe-g);
-
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -86,15 +77,6 @@
   --dark: #150a24;
   --ink-soft: #453d50;
   --subtle: #928c9c;
-
-  /* DPE A → G */
-  --dpe-a: #2f8f63;
-  --dpe-b: #4a9b58;
-  --dpe-c: #8bbb4a;
-  --dpe-d: #e2c53c;
-  --dpe-e: #e59b31;
-  --dpe-f: #d97030;
-  --dpe-g: #c94a3c;
 }
 
 @layer base {

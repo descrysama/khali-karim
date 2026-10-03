@@ -42,7 +42,6 @@
     "budget": "الميزانية",
     "rooms": "الغرف",
     "surface": "المساحة",
-    "energy": "الطاقة",
     "exterior": "مساحة خارجية",
     "elevator": "مصعد",
     "allFilters": "كل عوامل التصفية",
@@ -80,13 +79,6 @@
         "150": "≥ 150 م²",
         "250": "≥ 250 م²"
       },
-      "dpe": {
-        "any": "دون تحديد",
-        "A": "A",
-        "B": "B أو أفضل",
-        "C": "C أو أفضل",
-        "D": "D أو أفضل"
-      },
       "sort": {
         "recent": "الأحدث",
         "price-asc": "السعر تصاعدياً",
@@ -119,7 +111,6 @@
       "groupBudget": "الميزانية القصوى",
       "groupRooms": "الغرف",
       "groupSurface": "المساحة الدنيا",
-      "groupEnergy": "صنف الطاقة",
       "criteria": "المعايير",
       "exteriorHint": "شرفة أو تراس أو حديقة",
       "elevatorHint": "العمارات المزوّدة بمصعد فقط",
@@ -150,7 +141,6 @@
     "back": "العودة إلى النتائج",
     "photoCount": "{count, plural, one {عرض الصورة} two {عرض صورتين} few {عرض # صور} other {عرض # صورة}}",
     "sectionBien": "العقار",
-    "sectionEnergy": "الأداء الطاقي",
     "sectionQuartier": "الحي",
     "sectionSimilar": "عقارات مشابهة",
     "callAgency": "اتصل بالوكالة",

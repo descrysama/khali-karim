@@ -1,5 +1,4 @@
 import type {
-  DpeClass,
   Listing,
   ListingPhoto,
   PropertyType,
@@ -22,8 +21,6 @@ export interface BackendProperty {
   bedrooms: number | null;
   price: number;
   charges: number | null;
-  dpe: DpeClass | null;
-  ges: DpeClass | null;
   exterior: boolean;
   elevator: boolean | null;
   floor: number | null;
@@ -117,8 +114,6 @@ export function mapProperty(p: BackendProperty, baseUrl: string): Listing {
     bedrooms: p.bedrooms,
     price: p.price,
     charges: p.charges,
-    dpe: p.dpe,
-    ges: p.ges,
     exterior: p.exterior,
     elevator: p.elevator,
     floor: p.floor,
@@ -131,6 +126,5 @@ export function mapProperty(p: BackendProperty, baseUrl: string): Listing {
     publicRadiusM: p.publicRadiusM,
     isLand,
     isParking,
-    hasEnergy: !isLand && !isParking && p.dpe !== null,
   };
 }

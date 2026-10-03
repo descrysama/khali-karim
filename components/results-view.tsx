@@ -131,7 +131,6 @@ export function ResultsView() {
               <ListingCard
                 key={listing.id}
                 listing={listing}
-                showDpe
                 showCount
                 priority={i < 3}
                 animate

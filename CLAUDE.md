@@ -26,8 +26,6 @@ Site vitrine d'agence immobilière : consultation d'annonces (vente / location),
 
 À déclarer en variables CSS shadcn (`--primary`, `--border`, `--muted-foreground`…) dans `globals.css`, jamais de hex en dur dans les composants — toujours `bg-primary`, `text-muted-foreground`, etc.
 
-**Seule exception** : l'échelle DPE garde ses couleurs réglementaires (A `#2F8F63` → G `#C94A3C`). Ne pas les violetter.
-
 ## Conventions UI
 
 - Typo : **DM Sans** (texte), **DM Mono** (labels, compteurs, réfs, mentions légales — uppercase, letter-spacing ~0.14em, 10–11px).
@@ -39,15 +37,15 @@ Site vitrine d'agence immobilière : consultation d'annonces (vente / location),
 
 ## Modèle de données (bien)
 
-`id, type, kindLabel, transaction (vente|location), city, gov, zone, surface, rooms, bedrooms, price, dpe, ges, exterior, elevator, floor, floorTotal, photos[], isNew, year, charges`
+`id, type, kindLabel, transaction (vente|location), city, gov, zone, surface, rooms, bedrooms, price, exterior, elevator, floor, floorTotal, photos[], isNew, year, charges`
 
-Filtres supportés : localisation (texte + gouvernorat), transaction, type, budget max, pièces min, surface min, DPE max, extérieur, ascenseur. Tri : récent, prix ↑/↓, surface ↓.
+Filtres supportés : localisation (texte + gouvernorat), transaction, type, budget max, pièces min, surface min, extérieur, ascenseur. Tri : récent, prix ↑/↓, surface ↓.
 
 ## Règles métier
 
 - Prix en **DT**, formatés avec espace fine (`1 200 000 DT`), location suffixée `/ mois`.
-- **Terrain** : vente uniquement, pas de DPE, pas d'étage/ascenseur/chambres.
-- **Parking** : pas de DPE, pas de pièces.
+- **Terrain** : vente uniquement, pas d'étage/ascenseur/chambres.
+- **Parking** : pas de pièces.
 - **Immeuble** : les « pièces » s'affichent comme *lots* ; **Local commercial** : *espaces*. Pas de « chambres » hors résidentiel.
 - Gouvernorats couverts : Tunis, Ariana, Ben Arous, Nabeul, Sousse, Monastir, Sfax, Médenine.
 

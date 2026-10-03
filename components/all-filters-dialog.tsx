@@ -181,12 +181,6 @@ export function AllFiltersDialog({
             value={filters.surfaceMin}
             onPick={(v) => patch({ surfaceMin: v })}
           />
-          <ChipGroup
-            title={t("groupEnergy")}
-            options={options.dpeChips}
-            value={filters.dpeMax}
-            onPick={(v) => patch({ dpeMax: v })}
-          />
 
           <div>
             <SectionLabel>{t("criteria")}</SectionLabel>

@@ -8,7 +8,6 @@ export const DEFAULT_FILTERS: ListingFilters = {
   budget: "0",
   rooms: "0",
   surfaceMin: "0",
-  dpeMax: "",
   exterior: false,
   elevator: false,
   sort: "recent",
@@ -23,7 +22,6 @@ export function activeFilterCount(f: ListingFilters): number {
     +f.budget || "",
     +f.rooms || "",
     +f.surfaceMin || "",
-    f.dpeMax,
     f.exterior,
     f.elevator,
   ].filter(Boolean).length;
@@ -52,7 +50,6 @@ export function parseFilters(
     budget: get("budget") ?? "0",
     rooms: get("rooms") ?? "0",
     surfaceMin: get("surfaceMin") ?? "0",
-    dpeMax: get("dpeMax") ?? "",
     exterior: get("exterior") === "1",
     elevator: get("elevator") === "1",
     sort,
@@ -69,7 +66,6 @@ export function filtersToSearchParams(f: ListingFilters): URLSearchParams {
   if (+f.budget) p.set("budget", f.budget);
   if (+f.rooms) p.set("rooms", f.rooms);
   if (+f.surfaceMin) p.set("surfaceMin", f.surfaceMin);
-  if (f.dpeMax) p.set("dpeMax", f.dpeMax);
   if (f.exterior) p.set("exterior", "1");
   if (f.elevator) p.set("elevator", "1");
   if (f.sort !== "recent") p.set("sort", f.sort);

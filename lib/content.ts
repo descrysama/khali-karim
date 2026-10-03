@@ -285,27 +285,6 @@ export function description(d: Listing, locale: Locale): string {
   );
 }
 
-export function energyLine(d: Listing, locale: Locale): string {
-  const dpe = d.dpe ?? "—";
-  const ges = d.ges ?? "—";
-  const charges = d.charges;
-  if (locale === "ar")
-    return (
-      "صنف الطاقة " +
-      dpe +
-      " · صنف المناخ " +
-      ges +
-      (charges ? " · تقدير المعاليم " + charges + " د.ت شهرياً" : "")
-    );
-  return (
-    "Classe énergie " +
-    dpe +
-    " · classe climat " +
-    ges +
-    (charges ? " · estimation des charges " + charges + " DT / mois" : "")
-  );
-}
-
 export function legalLine(d: Listing, locale: Locale): string {
   if (locale === "ar")
     return (
@@ -374,7 +353,6 @@ export function facts(d: Listing, locale: Locale): Fact[] {
   };
   const elevator = { k: ar ? "المصعد" : "Ascenseur", v: d.elevator ? yes : no };
   const year = { k: ar ? "السنة" : "Année", v: d.year ?? dash };
-  const energy = { k: ar ? "الطاقة" : "Énergie", v: d.dpe ?? dash };
 
   if (!isResidential(d)) {
     return [
@@ -386,7 +364,6 @@ export function facts(d: Listing, locale: Locale): Fact[] {
       floor,
       elevator,
       year,
-      energy,
     ];
   }
   return [
@@ -397,6 +374,5 @@ export function facts(d: Listing, locale: Locale): Fact[] {
     { k: ar ? "مساحة خارجية" : "Extérieur", v: d.exterior ? yes : no },
     elevator,
     year,
-    energy,
   ];
 }

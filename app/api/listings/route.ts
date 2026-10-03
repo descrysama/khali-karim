@@ -13,7 +13,6 @@ export async function GET(request: Request) {
       budget: searchParams.get("budget") ?? undefined,
       rooms: searchParams.get("rooms") ?? undefined,
       surfaceMin: searchParams.get("surfaceMin") ?? undefined,
-      dpeMax: searchParams.get("dpeMax") ?? undefined,
       exterior: searchParams.get("exterior") === "1",
       elevator: searchParams.get("elevator") === "1",
       sort: searchParams.get("sort") ?? undefined,

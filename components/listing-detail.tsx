@@ -8,7 +8,6 @@ import {
   cityLabel,
   description,
   detailTitle,
-  energyLine,
   facts,
   legalLine,
   placeLabel,
@@ -17,7 +16,6 @@ import {
   unitLabel,
   zoneLabel,
 } from "@/lib/content";
-import { DpeScale } from "@/components/dpe-scale";
 import { ListingCard } from "@/components/listing-card";
 import { ListingPhoto, HATCH } from "@/components/listing-photo";
 import { Lightbox } from "@/components/lightbox";
@@ -183,18 +181,6 @@ export function ListingDetail({ id }: { id: string }) {
           <p className="text-pretty text-[15.5px] leading-[1.68] text-ink-soft">
             {description(d, locale)}
           </p>
-
-          {d.hasEnergy && d.dpe && (
-            <>
-              <h2 className="mb-3.5 mt-9 text-xl font-bold tracking-[-0.01em]">
-                {t("sectionEnergy")}
-              </h2>
-              <DpeScale value={d.dpe} />
-              <p className="mt-3 font-mono text-[11.5px] text-subtle">
-                {energyLine(d, locale)}
-              </p>
-            </>
-          )}
 
           <h2 className="mb-3.5 mt-9 text-xl font-bold tracking-[-0.01em]">
             {t("sectionQuartier")}
