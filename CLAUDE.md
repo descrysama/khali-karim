@@ -12,16 +12,16 @@ Site vitrine d'agence immobilière : consultation d'annonces (vente / location),
 
 | Rôle | Valeur |
 |---|---|
-| Primaire / accent | `#27064A` |
-| Primaire hover | `#3D0F6E` |
-| Fond sombre (hero, lightbox) | `#150A24` |
-| Texte principal | `#1B1424` |
-| Texte secondaire | `#453D50` |
-| Texte tertiaire / labels | `#6B6376` |
-| Texte discret | `#928C9C` |
-| Bordures | `#ECEAF0` |
-| Bordures inputs | `#E0DCE6` |
-| Fond neutre / placeholder | `#F4F2F7` |
+| Primaire / accent | `#002D45` |
+| Primaire hover | `#0B4466` |
+| Fond sombre (hero, lightbox) | `#001A29` |
+| Texte principal | `#10202B` |
+| Texte secondaire | `#3B4A55` |
+| Texte tertiaire / labels | `#5E6D78` |
+| Texte discret | `#8A98A2` |
+| Bordures | `#E6ECF0` |
+| Bordures inputs | `#D8E1E7` |
+| Fond neutre / placeholder | `#F1F5F8` |
 | Surface | `#FFFFFF` |
 
 À déclarer en variables CSS shadcn (`--primary`, `--border`, `--muted-foreground`…) dans `globals.css`, jamais de hex en dur dans les composants — toujours `bg-primary`, `text-muted-foreground`, etc.

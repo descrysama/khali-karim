@@ -24,7 +24,7 @@ export function TransactionTabs({
   return (
     <div
       className={cn(
-        "inline-flex gap-1 rounded-full bg-background p-[5px] shadow-[0_10px_30px_rgba(21,10,36,0.18)]",
+        "inline-flex gap-1 rounded-full bg-background p-[5px] shadow-[0_10px_30px_rgba(0,26,41,0.18)]",
         className
       )}
     >
@@ -36,7 +36,7 @@ export function TransactionTabs({
           className={cn(
             "rounded-full px-10 py-3 text-sm font-medium tracking-[0.01em] transition-colors",
             value === tab.value
-              ? "bg-primary text-primary-foreground shadow-[0_4px_14px_rgba(21,10,36,0.2)]"
+              ? "bg-primary text-primary-foreground shadow-[0_4px_14px_rgba(0,26,41,0.2)]"
               : "bg-background text-foreground hover:text-primary"
           )}
         >

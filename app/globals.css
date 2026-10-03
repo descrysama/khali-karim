@@ -47,36 +47,36 @@
   --radius: 0.625rem;
 
   --background: #ffffff;
-  --foreground: #1b1424;
+  --foreground: #10202b;
 
   --card: #ffffff;
-  --card-foreground: #1b1424;
+  --card-foreground: #10202b;
   --popover: #ffffff;
-  --popover-foreground: #1b1424;
+  --popover-foreground: #10202b;
 
-  --primary: #27064a;
+  --primary: #002d45;
   --primary-foreground: #ffffff;
-  --primary-hover: #3d0f6e;
+  --primary-hover: #0b4466;
 
-  --secondary: #f4f2f7;
-  --secondary-foreground: #1b1424;
+  --secondary: #f1f5f8;
+  --secondary-foreground: #10202b;
 
-  --muted: #f4f2f7;
-  --muted-foreground: #6b6376;
+  --muted: #f1f5f8;
+  --muted-foreground: #5e6d78;
 
-  --accent: #f4f2f7;
-  --accent-foreground: #27064a;
+  --accent: #f1f5f8;
+  --accent-foreground: #002d45;
 
   --destructive: #c94a3c;
 
-  --border: #eceaf0;
-  --input: #e0dce6;
-  --ring: #27064a;
+  --border: #e6ecf0;
+  --input: #d8e1e7;
+  --ring: #002d45;
 
   /* surfaces & textes supplémentaires */
-  --dark: #150a24;
-  --ink-soft: #453d50;
-  --subtle: #928c9c;
+  --dark: #001a29;
+  --ink-soft: #3b4a55;
+  --subtle: #8a98a2;
 }
 
 @layer base {

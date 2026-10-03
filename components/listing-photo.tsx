@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 /** Hachure de remplacement (placeholder) reproduite en utilitaire Tailwind. */
 export const HATCH =
-  "bg-[repeating-linear-gradient(135deg,#27064a17_0px,#27064a17_2px,transparent_2px,transparent_12px)]";
+  "bg-[repeating-linear-gradient(135deg,#002d4517_0px,#002d4517_2px,transparent_2px,transparent_12px)]";
 
 interface ListingPhotoProps {
   url: string | null;

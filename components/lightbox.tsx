@@ -105,7 +105,7 @@ export function Lightbox({
                 type="button"
                 onClick={() => onIndexChange(n)}
                 className={cn(
-                  "relative h-16 w-24 flex-none overflow-hidden rounded-lg bg-[#2b2338] outline-2 outline-offset-2 transition-opacity",
+                  "relative h-16 w-24 flex-none overflow-hidden rounded-lg bg-[#1d2d38] outline-2 outline-offset-2 transition-opacity",
                   n === index
                     ? "opacity-100 outline-white"
                     : "opacity-60 outline-transparent hover:opacity-90"
