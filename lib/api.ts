@@ -95,3 +95,23 @@ export async function getSimilar(id: string): Promise<Listing[]> {
   const data = (await res.json()) as BackendProperty[];
   return data.map((it) => mapProperty(it, PUBLIC_API_URL));
 }
+
+export interface HomeStats {
+  total: number;
+  vente: number;
+  location: number;
+  cities: number;
+}
+
+/** Chiffres réels de l'accueil (annonces publiées) ; null si l'API ne répond pas. */
+export async function getStats(): Promise<HomeStats | null> {
+  try {
+    const res = await fetch(`${API_URL}/properties/stats`, {
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    return (await res.json()) as HomeStats;
+  } catch {
+    return null;
+  }
+}

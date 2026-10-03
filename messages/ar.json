@@ -27,11 +27,10 @@
     "emptyTitle": "إعلانات جديدة قريباً",
     "emptyHint": "عقاراتنا في الطريق قريباً جداً. اتصل بنا لبحث على المقاس.",
     "seeAll": "عرض كل الإعلانات",
-    "statPortfolioLabel": "عقار في المحفظة",
-    "statGovernoratesLabel": "ولايات مغطّاة",
-    "statSinceLabel": "وكالة مستقلة منذ",
-    "statFirstVisitValue": "48 ساعة",
-    "statFirstVisitLabel": "متوسّط مهلة أول زيارة"
+    "statTotal": "{count, plural, one {إعلان منشور} other {إعلانات منشورة}}",
+    "statVente": "للبيع",
+    "statLocation": "للكراء",
+    "statCities": "{count, plural, one {مدينة مغطّاة} other {مدن مغطّاة}}"
   },
   "filters": {
     "searchPlaceholder": "مدينة، حي، رمز بريدي",

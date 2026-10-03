@@ -2,7 +2,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { HomeHero } from "@/components/home-hero";
 import { ListingCard } from "@/components/listing-card";
-import { getListings } from "@/lib/api";
+import { getListings, getStats } from "@/lib/api";
+import { fmtNumber } from "@/lib/content";
 import type { Listing } from "@/lib/types";
 
 // Sans ça, le fetch no-store échoue au build, est avalé par le try/catch et la
@@ -18,19 +19,23 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations("home");
 
-  let latest: Listing[] = [];
-  try {
-    latest = (await getListings({ limit: 3 })).items;
-  } catch {
-    latest = [];
-  }
+  const [latest, counts] = await Promise.all([
+    getListings({ limit: 3 })
+      .then((page) => page.items)
+      .catch((): Listing[] => []),
+    getStats(),
+  ]);
 
-  const stats = [
-    { value: "312", label: t("statPortfolioLabel") },
-    { value: "6", label: t("statGovernoratesLabel") },
-    { value: "1998", label: t("statSinceLabel") },
-    { value: t("statFirstVisitValue"), label: t("statFirstVisitLabel") },
-  ];
+  // Chiffres réels des annonces publiées ; bloc masqué tant qu'il n'y en a pas.
+  const stats =
+    counts && counts.total > 0
+      ? [
+          { value: counts.total, label: t("statTotal", { count: counts.total }) },
+          { value: counts.vente, label: t("statVente") },
+          { value: counts.location, label: t("statLocation") },
+          { value: counts.cities, label: t("statCities", { count: counts.cities }) },
+        ]
+      : [];
 
   return (
     <>
@@ -73,18 +78,24 @@ export default async function HomePage({
         )}
       </section>
 
-      <section className="mx-auto max-w-[1280px] px-7 pb-24 pt-20">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-px border-y border-border bg-border">
-          {stats.map((stat) => (
-            <div key={stat.label} className="bg-background px-6 py-[30px]">
-              <p className="text-[30px] font-bold tracking-[-0.02em]">
-                {stat.value}
-              </p>
-              <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {stats.length > 0 ? (
+        <section className="mx-auto max-w-[1280px] px-7 pb-24 pt-20">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-px border-y border-border bg-border">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-background px-6 py-[30px]">
+                <p className="text-[30px] font-bold tracking-[-0.02em]">
+                  {fmtNumber(stat.value)}
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <div className="pb-24" />
+      )}
     </>
   );
 }

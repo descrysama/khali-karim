@@ -27,11 +27,10 @@
     "emptyTitle": "Bientôt de nouvelles annonces",
     "emptyHint": "Nos biens arrivent très prochainement. Appelez-nous pour une recherche sur mesure.",
     "seeAll": "Voir toutes les annonces",
-    "statPortfolioLabel": "biens en portefeuille",
-    "statGovernoratesLabel": "gouvernorats couverts",
-    "statSinceLabel": "agence indépendante depuis",
-    "statFirstVisitValue": "48 h",
-    "statFirstVisitLabel": "délai moyen de première visite"
+    "statTotal": "{count, plural, one {annonce en ligne} other {annonces en ligne}}",
+    "statVente": "à la vente",
+    "statLocation": "à la location",
+    "statCities": "{count, plural, one {ville couverte} other {villes couvertes}}"
   },
   "filters": {
     "searchPlaceholder": "Ville, quartier, code postal",
