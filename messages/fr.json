@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Altayssir Immobilier — Vente & location en Tunisie",
-    "description": "Agence immobilière indépendante à La Marsa. Appartements, villas, terrains et locaux à la vente et à la location du Grand Tunis au Sahel."
+    "title": "Altayssir Immobilier — Vente & location à Monastir",
+    "description": "Agence immobilière indépendante à Monastir. Appartements, villas, terrains et locaux à la vente et à la location à Monastir et dans sa région."
   },
   "nav": {
     "buy": "Acheter",
@@ -13,8 +13,8 @@
   },
   "hero": {
     "titleLine1": "Votre prochaine adresse",
-    "titleLine2": "en Tunisie.",
-    "subtitle": "Tunis, La Marsa, Hammamet, Sousse, Djerba. Chaque bien visité par nos négociateurs avant publication.",
+    "titleLine2": "à Monastir.",
+    "subtitle": "Monastir et sa région. Chaque bien visité par nos négociateurs avant publication.",
     "tabVente": "Vente",
     "tabLocation": "Location",
     "fieldGouvernorat": "Gouvernorat",

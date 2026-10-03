@@ -36,16 +36,16 @@ const FALLBACK: BackendAgency = {
   nameAr: "التيسير العقارية",
   phone: "+216 71 000 000",
   email: "contact@altayssir.com",
-  addressFr: "14 avenue Habib Bourguiba, 2078 La Marsa",
-  addressAr: "14 شارع الحبيب بورقيبة، 2078 المرسى",
+  addressFr: "Monastir",
+  addressAr: "المنستير",
   hoursFr: "Lundi – samedi, 9h – 18h",
   hoursAr: "الإثنين – السبت، 9:00 – 18:00",
   headlineFr: "Parlons de votre projet.",
   headlineAr: "لنتحدّث عن مشروعك.",
   introFr:
-    "Altayssir accompagne acheteurs, vendeurs et locataires du Grand Tunis au Sahel depuis 1998.",
+    "Altayssir accompagne acheteurs, vendeurs et locataires à Monastir et dans sa région.",
   introAr:
-    "ترافق التيسير المشترين والبائعين والمكترين من تونس الكبرى إلى الساحل منذ 1998.",
+    "ترافق التيسير المشترين والبائعين والمكترين في المنستير وجهتها.",
   photoUrl: null,
 };
 
