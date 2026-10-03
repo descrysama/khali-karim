@@ -1,8 +1,12 @@
 import type { Listing, PropertyType } from "./types";
 import type { Locale } from "@/i18n/routing";
 
-/** Espace fine insécable comme séparateur de milliers. */
-const THIN = " ";
+/**
+ * Espace fine insécable (U+202F) comme séparateur de milliers. Pas une
+ * espace normale : en arabe (RTL), l'algorithme bidi inverserait l'ordre des
+ * groupes de chiffres (1 200 000 -> 000 200 1).
+ */
+const THIN = "\u202f";
 
 export function fmtNumber(n: number): string {
   return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, THIN);
