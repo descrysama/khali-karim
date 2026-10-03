@@ -10,7 +10,6 @@ import {
   detailTitle,
   energyLine,
   facts,
-  govLabel,
   legalLine,
   placeLabel,
   priceLabel,
@@ -217,23 +216,9 @@ export function ListingDetail({ id }: { id: string }) {
 
         <aside className="flex flex-col gap-3.5 lg:sticky lg:top-[92px]">
           <div className="rounded-2xl border border-border p-6">
-            <div className="flex items-center gap-3.5">
-              <div
-                className={cn(
-                  "size-[52px] flex-none rounded-full bg-muted",
-                  HATCH
-                )}
-              />
-              <div>
-                <p className="text-[15.5px] font-medium">{AGENCY.agentName}</p>
-                <p className="mt-[3px] text-[13px] text-subtle">
-                  {t("agentRole", { gov: govLabel(d.gov, locale) })}
-                </p>
-              </div>
-            </div>
             <a
               href={AGENCY.phoneHref}
-              className="mt-5 flex items-center justify-center rounded-xl bg-primary p-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+              className="flex items-center justify-center rounded-xl bg-primary p-4 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
             >
               {t("callAgency")}
             </a>
