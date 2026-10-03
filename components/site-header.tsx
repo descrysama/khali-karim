@@ -19,7 +19,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-2.5">
           <span className="block size-[22px] rounded bg-primary" />
           <span className="text-[19px] font-bold tracking-[-0.02em]">
-            Dar<span className="text-primary">Nour</span>
+            Al<span className="text-primary">tayssir</span>
           </span>
         </Link>
         <nav className="ms-auto flex items-center gap-6 text-[14.5px]">

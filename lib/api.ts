@@ -8,7 +8,10 @@ import {
 } from "./mappers";
 import type { Listing, ListingsPage, PropertyType } from "./types";
 
-export const API_URL = process.env.API_URL ?? "http://localhost:3001";
+export const API_URL = process.env.API_URL ?? "http://localhost:4001";
+// URL vue par le navigateur pour les photos (/uploads/*). En prod, API_URL
+// pointe sur le réseau Docker interne, inaccessible depuis le client.
+export const PUBLIC_API_URL = process.env.PUBLIC_API_URL ?? API_URL;
 export const PAGE_SIZE = 9;
 
 export interface ListingsQuery {
@@ -69,7 +72,7 @@ export async function getListings(
   const nextPage = data.page < data.pageCount ? clientPage + 1 : null;
 
   return {
-    items: data.items.map((it) => mapProperty(it, API_URL)),
+    items: data.items.map((it) => mapProperty(it, PUBLIC_API_URL)),
     total: data.total,
     page: clientPage,
     nextPage,
@@ -83,7 +86,7 @@ export async function getListing(id: string): Promise<Listing | null> {
   if (res.status === 404 || res.status === 400) return null;
   if (!res.ok) throw new Error(`Backend ${res.status}`);
   const data = (await res.json()) as BackendProperty;
-  return mapProperty(data, API_URL);
+  return mapProperty(data, PUBLIC_API_URL);
 }
 
 export async function getSimilar(id: string): Promise<Listing[]> {
@@ -92,5 +95,5 @@ export async function getSimilar(id: string): Promise<Listing[]> {
   });
   if (!res.ok) return [];
   const data = (await res.json()) as BackendProperty[];
-  return data.map((it) => mapProperty(it, API_URL));
+  return data.map((it) => mapProperty(it, PUBLIC_API_URL));
 }

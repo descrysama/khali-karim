@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "DarNour Immobilier — Vente & location en Tunisie",
+    "title": "Altayssir Immobilier — Vente & location en Tunisie",
     "description": "Agence immobilière indépendante à La Marsa. Appartements, villas, terrains et locaux à la vente et à la location du Grand Tunis au Sahel."
   },
   "nav": {
@@ -9,7 +9,7 @@
     "agency": "L'agence"
   },
   "footer": {
-    "tagline": "DarNour Immobilier — La Marsa, Tunisie",
+    "tagline": "Altayssir Immobilier — La Marsa, Tunisie",
     "legal": "Honoraires et mentions légales disponibles en agence"
   },
   "hero": {
@@ -171,7 +171,7 @@
   "agence": {
     "label": "L'agence",
     "title": "Parlons de votre projet.",
-    "body": "DarNour accompagne acheteurs, vendeurs et locataires du Grand Tunis au Sahel depuis 1998. Quatre négociateurs, un seul interlocuteur par dossier.",
+    "body": "Altayssir accompagne acheteurs, vendeurs et locataires du Grand Tunis au Sahel depuis 1998. Quatre négociateurs, un seul interlocuteur par dossier.",
     "callCta": "Appeler {phone}",
     "rowAddress": "Adresse",
     "rowHours": "Horaires",

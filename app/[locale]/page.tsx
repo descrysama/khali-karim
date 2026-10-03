@@ -5,6 +5,10 @@ import { ListingCard } from "@/components/listing-card";
 import { getListings } from "@/lib/api";
 import type { Listing } from "@/lib/types";
 
+// Sans ça, le fetch no-store échoue au build, est avalé par le try/catch et la
+// home est figée sans annonces.
+export const dynamic = "force-dynamic";
+
 export default async function HomePage({
   params,
 }: {
