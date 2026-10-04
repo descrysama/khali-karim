@@ -6,7 +6,9 @@
   "nav": {
     "buy": "Acheter",
     "rent": "Louer",
-    "agency": "L'agence"
+    "agency": "L'agence",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
   },
   "footer": {
     "legal": "Honoraires et mentions légales disponibles en agence"
